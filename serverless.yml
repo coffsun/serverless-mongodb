@@ -1,0 +1,51 @@
+service: serverless-mongodb
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  stage: ${env:STAGE, 'dev'}
+  group: serverless
+  service: mongodb
+  name: 
+    dev: ${self:custom.stage}-${self:custom.group}-${self:custom.service}
+    prod: ${self:custom.group}-${self:custom.service}
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ap-northeast-2
+  stage: ${env:STAGE, 'dev'}
+  stackName: ${self:custom.name.${self:custom.stage}, self.custom.dev}
+  deploymentBucket:
+    name: coffsun-deployments
+
+functions:
+  createUser:
+    handler: functions/createUser.handler
+    name: serverless-mongodb-createUser
+    events:
+      - http:
+          path: users
+          method: post
+  deleteUser:
+    handler: functions/deleteUser.handler
+    name: serverless-mongodb-deleteUser
+    events:
+      - http:
+          path: users/{userId}
+          method: delete
+  findUser:
+    handler: functions/findUser.handler
+    name: serverless-mongodb-findUser
+    events:
+      - http:
+          path: users/{userId}
+          method: get
+  updateUser:
+    handler: functions/updateUser.handler
+    name: serverless-mongodb-updateUser
+    events:
+      - http:
+          path: users/{userId}
+          method: put
