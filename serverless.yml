@@ -33,6 +33,13 @@ functions:
       - http:
           path: users/{userId}
           method: delete
+  findUsers:
+    handler: functions/findUsers.handler
+    name: serverless-mongodb-findUsers
+    events:
+      - http:
+          path: users
+          method: get
   findUser:
     handler: functions/findUser.handler
     name: serverless-mongodb-findUser
