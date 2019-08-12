@@ -10,14 +10,14 @@ module.exports.handler = async (event, context) => {
   try {
     body = JSON.parse(body);
 
-	  if (!(body.name && body.phone)) {
-	  	return {
-	      statusCode: 400,
-	      body: JSON.stringify({
-	        message: 'Required to name and phone in body'
-	      })
-	    };
-	  }
+    if (!(body.name && body.phone)) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+	  message: 'Required to name and phone in body'
+        })
+      };
+    }
   } catch(e) {
     return {
       statusCode: 400,
