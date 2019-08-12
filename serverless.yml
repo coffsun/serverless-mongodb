@@ -17,8 +17,6 @@ provider:
   region: ap-northeast-2
   stage: ${env:STAGE, 'dev'}
   stackName: ${self:custom.name.${self:custom.stage}, self.custom.dev}
-  deploymentBucket:
-    name: coffsun-deployments
 
 functions:
   createUser:
