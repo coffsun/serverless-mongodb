@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectID;
 let db;
 
 module.exports.handler = async (event, context) => {
-	const userId = event.pathParameters.userId;
+  const userId = event.pathParameters.userId;
   let body = event.body;
   let updatedUser;
 
