@@ -53,9 +53,9 @@ module.exports.handler = async (event, context) => {
 
   // 3. Find User
   try {
-  	let params = { updatedAt: new Date() };
+    let params = { updatedAt: new Date() };
 
-  	if (body.name) params.name = body.name;
+    if (body.name) params.name = body.name;
 
     updatedUser = await db.collection('users').findOneAndUpdate(
     	{ _id: ObjectId(userId) },
