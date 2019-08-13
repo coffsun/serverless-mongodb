@@ -11,13 +11,13 @@ module.exports.handler = async (event, context) => {
   // 1. Validate data
   try {
     if (!userId) {
-	    return {
-	      statusCode: 400,
-	      body: JSON.stringify({
-	        message: 'Required to userId in path'
-	      })
-	    };
-	  }
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          message: 'Required to userId in path'
+        })
+      };
+    }
   } catch(e) {
     return {
       statusCode: 400,
