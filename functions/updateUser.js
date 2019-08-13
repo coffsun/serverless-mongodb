@@ -13,22 +13,22 @@ module.exports.handler = async (event, context) => {
     body = JSON.parse(body);
 
     if (!userId) {
-	    return {
-	      statusCode: 400,
-	      body: JSON.stringify({
-	        message: 'Required to userId in path'
-	      })
-	    };
-	  }
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+	  message: 'Required to userId in path'
+        })
+      };
+    }
 
-	  if (!(body.name || body.phone)) {
-	  	return {
-	      statusCode: 400,
-	      body: JSON.stringify({
-	        message: 'Required to name or phone in body'
-	      })
-	    };
-	  }
+    if (!(body.name || body.phone)) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+	  message: 'Required to name or phone in body'
+        })
+      };
+    }
   } catch(e) {
     return {
       statusCode: 400,
